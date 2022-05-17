@@ -1,0 +1,12 @@
+name: Deploy with gh-pages
+on: [push]
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        cd cv
+        git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/joclegg/joclegg.github.io.git
+        npm i react-scripts
+        npm run deploy
